@@ -13,9 +13,8 @@
     [Install]
     WantedBy=multi-user.target
     EOF
-    systemctl start bitwarden
-
-
+    
+systemctl start bitwarden
 
     cat <<EOF > /usr/lib/systemd/system/bitwarden.timer
     [Unit]
@@ -29,7 +28,6 @@
     WantedBy=timers.target
     EOF
     
-   
     cat <<EOF > /usr/lib/systemd/system/bitwarden.timer
     [Unit]
     Description=Run foo weekly and on boot
