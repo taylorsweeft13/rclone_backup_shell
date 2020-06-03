@@ -2,45 +2,43 @@
 
 创建service
 
-cat <<EOF >/usr/lib/systemd/system/bitwarden.service 
-[Unit]
-Description=bitwarden backup service
- 
-[Service]
-Type=simple
-ExecStart=/file/sh/bitwarden_backup.sh
- 
-[Install]
-WantedBy=multi-user.target
-EOF
+    cat <<EOF >/usr/lib/systemd/system/bitwarden.service 
+    [Unit]
+    Description=bitwarden backup service
+     
+    [Service]
+    Type=simple
+    ExecStart=/file/sh/bitwarden_backup.sh
+     
+    [Install]
+    WantedBy=multi-user.target
+    EOF
+    
 systemctl start bitwarden
 
-
-
-cat <<EOF > /usr/lib/systemd/system/bitwarden.timer
-[Unit]
-Description=bitwarden backup task
- 
-[Timer]
-OnUnitActiveSec=10m
-Unit=bitwarden
- 
-[Install]
-WantedBy=timers.target
-EOF
-
-
-cat <<EOF > /usr/lib/systemd/system/bitwarden.timer
-[Unit]
-Description=Run foo weekly and on boot
- 
-[Timer]
-OnBootSec=3min
-OnUnitActiveSec=9h
- 
-[Install]
-WantedBy=timers.target
-EOF
+    cat <<EOF > /usr/lib/systemd/system/bitwarden.timer
+    [Unit]
+    Description=bitwarden backup task
+     
+    [Timer]
+    OnUnitActiveSec=10m
+    Unit=bitwarden
+     
+    [Install]
+    WantedBy=timers.target
+    EOF
+    
+    cat <<EOF > /usr/lib/systemd/system/bitwarden.timer
+    [Unit]
+    Description=Run foo weekly and on boot
+     
+    [Timer]
+    OnBootSec=3min
+    OnUnitActiveSec=9h
+     
+    [Install]
+    WantedBy=timers.target
+    EOF
 
 
 systemctl daemon-reload
