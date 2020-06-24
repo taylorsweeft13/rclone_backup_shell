@@ -22,7 +22,7 @@ bitwardenrs/server:latest
 echo '4	run bitwarden success'
 
 docker images | grep none | grep -v grep | awk '{print $3}' | xargs  docker rmi -f
-echo '5	delete unuse images'	
+echo '5	delete unused images'	
 
 
 
