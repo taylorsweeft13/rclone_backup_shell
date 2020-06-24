@@ -19,8 +19,10 @@ docker run -d --name bitwarden\
     -p 3080:80 \
     -p 3012:3012 \
 bitwardenrs/server:latest
+echo '4	run bitwarden success'
 
-echo '4	delete unuse images'	
 docker images | grep none | grep -v grep | awk '{print $3}' | xargs  docker rmi -f
+echo '5	delete unuse images'	
 
-echo '5	run bitwarden success'
+
+
